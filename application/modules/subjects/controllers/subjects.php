@@ -83,17 +83,10 @@ Modules::run('site_security/is_login');
         foreach($arr_teacher as $row){
 
             $teacher[$row['id']] = $row['name'];
-
-            
-
         }
 
-
-
         foreach($arr_program as $row){
-
             $program[$row['id']] = $row['name'];
-
         }
 
        

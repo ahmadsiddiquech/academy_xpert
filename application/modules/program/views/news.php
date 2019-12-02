@@ -2,7 +2,7 @@
 
 <div class="content-wrapper">
 
-    <h3>Program<a href="program/create"><button type="button" class="btn btn-primary pull-right"><i class="fa fa-plus"></i>&nbsp;&nbsp;&nbsp;Add New</button></a></h3>
+    <h3>Program<a href="program/create"><button type="button" class="btn btn-lg btn-primary pull-right"><i class="fa fa-plus"></i>&nbsp;&nbsp;&nbsp;<b>Add Program</b></button></a></h3>
 
     <div class="container-fluid">
 

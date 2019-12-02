@@ -1,4 +1,3 @@
-
 <?php
 
 if ( ! defined('BASEPATH')) exit('No direct script access allowed');
@@ -74,8 +73,8 @@ Modules::run('site_security/is_login');
             {
                 $id = $this->_insert($data);
             }
-                $this->session->set_flashdata('message', 'expense'.' '.DATA_SAVED);										
-		        $this->session->set_flashdata('status', 'success');
+            $this->session->set_flashdata('message', 'expense'.' '.DATA_SAVED);										
+	        $this->session->set_flashdata('status', 'success');
             
             redirect(ADMIN_BASE_URL . 'expense');
         }

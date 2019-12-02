@@ -167,4 +167,19 @@ class Mdl_test extends CI_Model {
         $this->db->where($where);
         return $this->db->get($table);
     }
+
+    function _get_org_print_voucher($org_id) {
+        $table = 'users';
+        $this->db->where('id',$org_id);
+        return $this->db->get($table);
+    }
+
+    function _get_test_print_voucher($test_id,$org_id){
+        $this->db->select('test.*,test_marks.*');
+        $this->db->from('test');
+        $this->db->join("test_marks", "test.id = test_marks.test_id", "full");
+        $this->db->where('test.id', $test_id);
+        $this->db->where('test.org_id', $org_id);
+        return $this->db->get();
+    }
 }

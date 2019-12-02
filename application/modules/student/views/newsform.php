@@ -10,7 +10,7 @@
                     $strTitle = 'Edit student';
                     echo $strTitle;
                     ?>
-                    <a href="<?php echo ADMIN_BASE_URL . 'student'; ?>"><button type="button" class="btn btn-primary pull-right"><i class="fa fa-chevron-left"></i>&nbsp;&nbsp;&nbsp;Back</button></a>
+                    <a href="<?php echo ADMIN_BASE_URL . 'student'; ?>"><button type="button" class="btn btn-primary btn-lg pull-right"><i class="fa fa-chevron-left"></i>&nbsp;&nbsp;&nbsp;<b>Back</b></button></a>
        </h3>             
             
     </div>
@@ -357,7 +357,7 @@
                             );
                             $attribute = array('class' => 'control-label col-md-4');
                           ?>
-                          <?php echo form_label('Stationary Fee', 'stationary_fee', $attribute); ?>
+                          <?php echo form_label('Fine', 'stationary_fee', $attribute); ?>
                           <div class="col-md-8"> <?php echo form_input($data); ?> </div>
                         </div>
                       </div>

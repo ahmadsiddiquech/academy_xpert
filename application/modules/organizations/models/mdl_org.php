@@ -1,9 +1,5 @@
 <?php 
-/*************************************************
-Created By: Waseem Khan
-Dated: 03/18/2016
 
-*************************************************/
 if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Mdl_org extends CI_Model {
@@ -106,9 +102,10 @@ return $query;
 }
 
 function _insert($data){
-$table = $this->get_table();
-$this->db->insert($table, $data);
-return $this->db->insert_id();
+  $table = $this->get_table();
+  // print_r($data);exit();
+  $this->db->insert($table, $data);
+  return $this->db->insert_id();
 }
 
 function _delete($id) {

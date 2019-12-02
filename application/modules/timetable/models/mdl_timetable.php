@@ -180,5 +180,20 @@ class Mdl_timetable extends CI_Model {
         $this->db->where($where);
         return $this->db->get($table);
     }
+
+    function _get_org_print_voucher($org_id) {
+        $table = 'users';
+        $this->db->where('id',$org_id);
+        return $this->db->get($table);
+    }
+
+    function _get_timetable_print_voucher($timetable_id,$org_id){
+        $this->db->select('timetable_record.*,timetable_data.*');
+        $this->db->from('timetable_record');
+        $this->db->join("timetable_data", "timetable_record.id = timetable_data.timetable_id", "full");
+        $this->db->where('timetable_record.id', $timetable_id);
+        $this->db->where('timetable_record.org_id', $org_id);
+        return $this->db->get();
+    }
 }
 ?>

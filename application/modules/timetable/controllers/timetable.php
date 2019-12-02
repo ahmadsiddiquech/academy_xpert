@@ -32,6 +32,18 @@ Modules::run('site_security/is_login');
         $this->template->admin($data);
     }
 
+    function print_timetable(){
+        $timetable_id = $this->uri->segment(4);
+        $user_data = $this->session->userdata('user_data');
+        $org_id = $user_data['user_id'];
+        $timetable = $this->_get_timetable_print_voucher($timetable_id,$org_id)->result_array();
+        $org = $this->_get_org_print_voucher($org_id)->result_array();
+        $data['org'] = $org;
+        $data['timetable'] = $timetable;
+       
+        $this->load->view('print',$data);
+    }
+
     function manage() {
         $program_id = $this->input->post('program_id');
         $class_id = $this->input->post('class_id');
@@ -523,6 +535,16 @@ Modules::run('site_security/is_login');
     function _get_parent_token($parent_id,$org_id){
         $this->load->model('mdl_timetable');
         return $this->mdl_timetable->_get_parent_token($parent_id,$org_id);
+    }
+
+    function _get_timetable_print_voucher($timetable_id,$org_id){
+        $this->load->model('mdl_timetable');
+        return $this->mdl_timetable->_get_timetable_print_voucher($timetable_id,$org_id);
+    }
+
+    function _get_org_print_voucher($org_id){
+        $this->load->model('mdl_timetable');
+        return $this->mdl_timetable->_get_org_print_voucher($org_id);
     }
 }
 ?>

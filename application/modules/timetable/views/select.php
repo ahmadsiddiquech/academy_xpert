@@ -2,9 +2,8 @@
   <div class="page-content"> 
     <div class="content-wrapper">
         
-      <h3>Timetable Record</h3>             
-            
-    </div>
+      <h3>Timetable Record<a href="timetable/create"><button type="button" class="btn btn-lg btn-primary pull-right"><i class="fa fa-plus"></i>&nbsp;&nbsp;&nbsp;<b>Add Timetable</b></button></a></h3>
+      </div>
     <div class="row">
       <div class="col-md-12">
         <div class="tabbable tabbable-custom boxless">

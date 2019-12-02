@@ -39,22 +39,16 @@ function create(){
          if ($update_id && $update_id != 0) {
 
             $data['users'] = $this->_get_data_from_db($update_id);
-            
-            
         } else {
             $data['users'] = $this->_get_data_from_post();
         }
-    
         $data['update_id'] = $update_id;  
-        $arrWhere['outlet_id'] = '8';
+        $arrWhere['outlet_id'] = DEFAULT_OUTLET;
         $arr_roles = Modules::run('roles/_get_by_arr_id',$arrWhere)->result_array();
-        // print_r($arr_roles);exit();
         $roles = array();
         foreach($arr_roles as $row){
-            $roles[$row['id']] = $row['role'];
-            
+            $roles[$row['id']] = $row['role'];   
         }
-       
         $data['roles_title'] = $roles;
         
         $data['view_file'] = 'users_form';
@@ -67,32 +61,21 @@ function create(){
     }
 }
 
-function submit() {
+    function submit() {
+        $update_id = $this->uri->segment(4);
+        $data = $this->_get_data_from_post();
 
-  
-            $update_id = $this->uri->segment(4);
-            $data = $this->_get_data_from_post();
-            
-            if ($update_id && $update_id != 0) {
-                    $where['id'] = $update_id;
-                    $itemInfo = $this->_getItemById($update_id);
-                    $this->_update($where, $data);
-                        $this->session->set_flashdata('message', 'organizations'.' '.DATA_UPDATED);                                      
-                        $this->session->set_flashdata('status', 'success');
-                }
-            else {
-                
-                $data = $this->_get_data_from_post();
-                $id = $this->_insert($data);
-                $this->session->set_flashdata('message', 'organizations'.' '.DATA_SAVED);                                        
-                $this->session->set_flashdata('status', 'success');
-                $data['users'] = $this->_get()->result_array();
-                $data['view_file'] = 'users_listing';
-                $this->load->module('template');
-                $this->template->admin($data);
-            }
-        
-            redirect(ADMIN_BASE_URL . 'organizations');
+        if ($update_id && $update_id != 0){
+            $where['id'] = $update_id;
+            $this->_update($where, $data);
+        }
+        else{
+            $id = $this->_insert($data);
+        }
+
+        $this->session->set_flashdata('message', 'organizations'.' '.DATA_SAVED);
+        $this->session->set_flashdata('status', 'success');
+        redirect(ADMIN_BASE_URL . 'organizations');
     }
 
     function _get_data_from_db($update_id) {
@@ -277,7 +260,7 @@ function _update_status_event($id, $data) {
     $this->load->model('mdl_org');
     $this->mdl_org->_update_id($id, $data);
 }
-function _insert($data, $type){
+function _insert($data){
 $this->load->model('mdl_org');
 return $this->mdl_org->_insert($data);
 }
